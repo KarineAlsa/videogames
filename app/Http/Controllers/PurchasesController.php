@@ -12,7 +12,7 @@ class PurchasesController extends Controller
 
     public function index()
     {
-        $purchase = purchase::orderBy('id')->paginate(50);
+        $purchase = purchase::orderBy('id')->paginate(10);
 
         $videocontroller = new VideogamesController();
         
