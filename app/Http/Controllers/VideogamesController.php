@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\videogame;
 use Illuminate\Http\Request;
+use App\Http\Controllers\FileController;
 
 class VideogamesController extends Controller
 {
@@ -19,18 +20,27 @@ class VideogamesController extends Controller
 
     public function store(Request $request)
     {
-        
 
+        $fileName = time().'.'.$request->file("cover")->getClientOriginalExtension();  
+        
+        $path=$request->file('cover')->move(('uploads'), $fileName);
+        
+        
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'cover' => 'required',
             'price' => 'required'
         ]);
  
-        $videogames = videogame::create($request->all());
+        $videogames = videogame::create([
+            'title' => $request->get('title'),
+            'description' => $request->get('description'),
+            'cover' => $path,
+            'price' => $request->get('price'),
+        ]);
+
         return [
-            "status" => 1,
+            "status" => true,
             "data" => $videogames
         ];
     }

@@ -17,17 +17,17 @@ class UserController extends Controller
         ]);
    
         $credentials = $request->only('username', 'password');
-        
+
         if (Auth::attempt($credentials)) {
             return [
-                "status" =>1,
-                "data" => "si",
+                "status" =>true,
+                "data" => "validado",
             ];
         }
 
         else{
             return [
-                "status" =>1,
+                "status" =>false,
                 "data" => "no validado",
             ];
         }
