@@ -48,7 +48,7 @@ class VideogamesController extends Controller
     {
         $videogame->delete();
         return [
-            "status" => 1   ,
+            "status" => true   ,
             "data" => $videogame,
             "msg" => "videogame deleted successfully"
         ];
@@ -71,7 +71,7 @@ class VideogamesController extends Controller
         $videogame->save();
         
         return [
-            "status" => 1,
+            "status" => true,
             "data" => $videogame,
             "msg" => "videogame updated"
         ];

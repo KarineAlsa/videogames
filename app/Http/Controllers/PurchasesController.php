@@ -48,7 +48,7 @@ class PurchasesController extends Controller
         ]);
         $purchase = purchase::create($request->all());
         return [
-            "status" => 1,
+            "status" => true,
             "data" => $purchase,
         ];
     }
@@ -57,7 +57,7 @@ class PurchasesController extends Controller
     {
         $purchase->delete();
         return [
-            "status" => 1,
+            "status" => true,
             "data" => $purchase,
             "msg" => "videogame deleted successfully"
         ];
@@ -75,7 +75,7 @@ class PurchasesController extends Controller
         $purchase->update($request->all());
  
         return [
-            "status" => 1,
+            "status" => true,
             "data" => $purchase,
             "msg" => "videogame updated"
         ];
